@@ -203,7 +203,7 @@ class ParDataLegalEntity extends ParDataEntity {
     $fields['registered_name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Registered Name'))
       ->setDescription(t('The registered name of the legal entity.'))
-      ->setRequired(TRUE)
+      ->addConstraint('par_required')
       ->setRevisionable(TRUE)
       ->setSettings([
         'max_length' => 500,
@@ -225,6 +225,7 @@ class ParDataLegalEntity extends ParDataEntity {
     $fields['registered_number'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Registered Number'))
       ->setDescription(t('The registered number of the legal entity.'))
+      ->addConstraint('par_required')
       ->setRevisionable(TRUE)
       ->setSettings([
         'max_length' => 255,
