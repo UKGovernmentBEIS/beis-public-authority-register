@@ -69,6 +69,7 @@ Then('I enter new summary for an inspection plan', function () {
 
 Then('I see the inspection plan has updated successfully', function () {
     return shared
+        .assert.containsText('h1.heading-xlarge', 'Inspection Plans')
         .clickLinkByPureText('Auto-test-NewInspectionPlan-retest')
         .assert.containsText('h1.heading-xlarge', 'Auto-test-NewInspectionPlan-retest')
         .assert.containsText('#content', 'Auto-inspection-plan-Summary-retest')
@@ -89,8 +90,8 @@ When('I remove the inspection plan {string} with the reason {string}', function 
         .clickLinkByPureText('Remove inspection plan')
         .assert.containsText('h1.heading-xlarge', 'Are you sure you want to remove this inspection plan?')
         .click('#edit-next')
-        .waitForElementVisible('.error-summary', 1000)
-        .assert.containsText('.error-summary', 'Please enter the reason you are removing this inspection plan.')
+        .waitForElementVisible('.govuk-error-summary', 1000)
+        .assert.containsText('.govuk-error-summary', 'Please enter the reason you are removing this inspection plan.')
         .setValue('#edit-remove-reason', reason)
         .click('#edit-next')
 });
